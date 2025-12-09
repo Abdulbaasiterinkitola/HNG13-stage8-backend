@@ -26,10 +26,10 @@ import walletRoutes from './routes/wallet.routes';
 app.use('/keys', apiKeyRoutes);
 app.use('/wallet', walletRoutes);
 
-const PORT = process.env.PORT || 3000;
+const PORT = 3000;
 
 app.get('/', (req, res) => {
-    res.send('Wallet Service API is running');
+    res.send('Wallet Service API is running on Port 3000');
 });
 
 app.listen(PORT, () => {
