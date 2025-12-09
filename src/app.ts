@@ -21,7 +21,10 @@ app.use(passport.initialize());
 app.use('/auth', authRoutes);
 
 import apiKeyRoutes from './routes/apiKey.routes';
+import walletRoutes from './routes/wallet.routes';
+
 app.use('/keys', apiKeyRoutes);
+app.use('/wallet', walletRoutes);
 
 const PORT = process.env.PORT || 3000;
 
