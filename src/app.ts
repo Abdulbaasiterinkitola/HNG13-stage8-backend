@@ -20,6 +20,9 @@ app.use(passport.initialize());
 
 app.use('/auth', authRoutes);
 
+import apiKeyRoutes from './routes/apiKey.routes';
+app.use('/keys', apiKeyRoutes);
+
 const PORT = process.env.PORT || 3000;
 
 app.get('/', (req, res) => {
