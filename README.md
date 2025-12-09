@@ -1,4 +1,4 @@
-# Ottoman Wallet Service
+# Wallet Service - HNG Stage 8 Task
 
 A robust backend wallet service built with Node.js, Express, TypeScript, and MongoDB. It supports both JWT authentication (via Google) and API Key access for service-to-service communication.
 
