@@ -43,9 +43,10 @@ export const verifyPayment = async (reference: string) => {
     }
 };
 
-export const verifyWebhookSignature = (signature: string, body: any): boolean => {
+export const verifyWebhookSignature = (signature: string, body: any, rawBody?: Buffer): boolean => {
+    const payload = rawBody ? rawBody.toString() : JSON.stringify(body);
     const hash = crypto.createHmac('sha512', PAYSTACK_SECRET_KEY || '')
-        .update(JSON.stringify(body))
+        .update(payload)
         .digest('hex');
 
     return hash === signature;

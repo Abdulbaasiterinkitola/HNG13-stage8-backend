@@ -24,7 +24,8 @@ passport.use(
                         name: profile.displayName,
                     });
 
-                    await Wallet.create({ user: user._id });
+                    const account_number = Math.floor(1000000000 + Math.random() * 9000000000).toString();
+                    await Wallet.create({ user: user._id, account_number });
                 }
 
                 return done(null, user);

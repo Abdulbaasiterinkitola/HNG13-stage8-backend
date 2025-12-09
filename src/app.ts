@@ -15,7 +15,11 @@ const app = express();
 
 app.use(cors());
 app.use(helmet());
-app.use(express.json());
+app.use(express.json({
+    verify: (req: any, res, buf) => {
+        req.rawBody = buf;
+    }
+}));
 app.use(passport.initialize());
 
 app.use('/auth', authRoutes);
