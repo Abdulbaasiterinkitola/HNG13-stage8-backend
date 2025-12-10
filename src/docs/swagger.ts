@@ -1,4 +1,4 @@
-{
+export const swaggerDocument = {
     "openapi": "3.0.0",
     "info": {
         "title": "Wallet Service API",
@@ -11,8 +11,8 @@
             "description": "Local Development Server"
         },
         {
-            "url": "https://your-ngrok-url.ngrok-free.app",
-            "description": "Public Usage (Ngrok)"
+            "url": "https://wallet-service-submission.onrender.com",
+            "description": "Production Server (Render)"
         }
     ],
     "components": {
@@ -250,4 +250,4 @@
             }
         }
     }
-}
+};

@@ -29,7 +29,7 @@ app.use('/auth', authRoutes);
 import apiKeyRoutes from './routes/apiKey.routes';
 import walletRoutes from './routes/wallet.routes';
 import swaggerUi from 'swagger-ui-express';
-import * as swaggerDocument from './docs/swagger.json';
+import { swaggerDocument } from './docs/swagger';
 
 app.use('/keys', apiKeyRoutes);
 app.use('/wallet', walletRoutes);
