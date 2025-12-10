@@ -65,6 +65,7 @@ A robust backend wallet service built with Node.js, Express, TypeScript, and Mon
     ```
 
 ## API Documentation
+**[View Swagger Documentation](http://localhost:3000/api-docs)** (or your ngrok URL + `/api-docs`)
 
 ### Auth
 - `GET /auth/google`: Login with Google.
