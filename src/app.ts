@@ -35,7 +35,7 @@ app.use('/keys', apiKeyRoutes);
 app.use('/wallet', walletRoutes);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.get('/', (req, res) => {
     res.send('Wallet Service API is running on Port 3000');
