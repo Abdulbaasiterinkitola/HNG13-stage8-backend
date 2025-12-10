@@ -44,6 +44,7 @@ export const swaggerDocument = {
                 "tags": [
                     "Authentication"
                 ],
+                "security": [],
                 "responses": {
                     "302": {
                         "description": "Redirects to Google Sign-In"

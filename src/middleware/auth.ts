@@ -12,7 +12,7 @@ interface DecodedToken {
 declare global {
     namespace Express {
         interface Request {
-            user?: User; // strict typing would require importing User document type
+            user?: User;
             apiKeyPermissions?: string[];
             authMethod?: 'jwt' | 'apikey';
         }

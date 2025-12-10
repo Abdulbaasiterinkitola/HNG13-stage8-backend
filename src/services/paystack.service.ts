@@ -12,7 +12,7 @@ export const initializePayment = async (amount: number, email: string) => {
             'https://api.paystack.co/transaction/initialize',
             {
                 email,
-                amount: amount * 100, // Convert to kobo
+                amount: Math.round(amount * 100), // Convert to kobo
             },
             {
                 headers: {
