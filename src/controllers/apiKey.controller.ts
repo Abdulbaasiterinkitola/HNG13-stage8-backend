@@ -85,8 +85,6 @@ export const rolloverApiKey = async (req: Request, res: Response) => {
             keyHash
         });
 
-        // Optionally mark old key as revoked/handled if not already, though it is expired.
-
         res.status(200).json({
             id: newKey._id,
             api_key: rawKey,
