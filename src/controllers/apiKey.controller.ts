@@ -8,8 +8,14 @@ export const createApiKey = async (req: Request, res: Response) => {
         const { name, permissions, expiry } = req.body;
         const user = req.user as IUser;
 
-        if (!name || !permissions || !expiry) {
-            return res.status(400).json({ error: 'Please provide name, permissions, and expiry' });
+        if (!name || typeof name !== 'string') {
+            return res.status(400).json({ error: 'Name is required and must be a string' });
+        }
+        if (!permissions || !Array.isArray(permissions)) {
+            return res.status(400).json({ error: 'Permissions must be an array of strings' });
+        }
+        if (!expiry || typeof expiry !== 'string') {
+            return res.status(400).json({ error: 'Expiry is required and must be a string (e.g., "1M")' });
         }
 
         const expiresAt = parseExpiry(expiry);
@@ -44,8 +50,9 @@ export const createApiKey = async (req: Request, res: Response) => {
             api_key: rawKey,
             expires_at: apiKey.expiresAt
         });
-    } catch (error) {
-        res.status(500).json({ error: 'Server error' });
+    } catch (error: any) {
+        console.error("Create API Key Error:", error);
+        res.status(500).json({ error: error.message || 'Server error', details: error });
     }
 };
 
