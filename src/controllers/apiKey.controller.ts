@@ -51,6 +51,17 @@ export const createApiKey = async (req: Request, res: Response) => {
             expires_at: apiKey.expiresAt
         });
     } catch (error: any) {
+        // Self-Healing: Check for stale 'key_1' index from previous schema versions
+        if (error.code === 11000 && error.keyPattern && error.keyPattern.key) {
+            try {
+                await ApiKey.collection.dropIndex('key_1');
+                console.log('Dropped stale index: key_1');
+                return res.status(409).json({ error: 'System detected and fixed a database conflict. Please try your request again.' });
+            } catch (dropError) {
+                console.error('Failed to drop stale index:', dropError);
+            }
+        }
+
         console.error("Create API Key Error:", error);
         res.status(500).json({ error: error.message || 'Server error', details: error });
     }
